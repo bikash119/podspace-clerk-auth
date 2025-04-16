@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "john_doe",
+      "email": "john@example.com"
+    },
+    {
+      "id": 2,
+      "username": "jane_smith",
+      "email": "jane@example.com"
+    },
+    {
+      "id": 3,
+      "username": "new_user",
+      "email": "newuser@example.com"
+    },
+    {
+      "id": 4,
+      "username": "locked_account",
+      "email": "locked@example.com"
+    },
+    {
+      "id": 5,
+      "username": "password_reset",
+      "email": "reset@example.com"
+    },
+    {
+      "username": "aaaa@",
+      "passwordHash": "$2b$10$NeX7dxUfRKZjqp3mbWs5BefrVquTchDvpm/z5o5AJuKz4AJA8arXm",
+      "id": 6
+    },
+    {
+      "username": "aaaa@",
+      "passwordHash": "$2b$10$./JeqpxnY3MNfVLBxd5loOAMHT/L7RyIeyAa9bLC8s2N./PaZbBY6",
+      "id": 7
+    },
+    {
+      "username": "aaaa@",
+      "passwordHash": "$2b$10$.NNkbbNGOdcR9H9ahZoXoOGHn424TP.9Z36hc3vrYHTBHUJ2sAgsO",
+      "id": 8
+    },
+    {
+      "username": "adfa@da",
+      "passwordHash": "$2b$10$Agf.GlAIhiS1BgXln.2OvOfy/IEDWjx8.boqx6i0Sws0lK1KMXYv.",
+      "id": 9
+    },
+    {
+      "username": "adfa@da",
+      "passwordHash": "$2b$10$O4ZKGkae9qFAKv3vwx5ctOhlZQWTOICh4n8C4LB/3sNuNrfToHPpm",
+      "id": 10
+    },
+    {
+      "username": "adfa@da",
+      "passwordHash": "$2b$10$EnSflXyoJOqWedNp4KPRF.zsFlqI086wqi3JZgipnOBVzwzvPH.Qm",
+      "id": 11
+    },
+    {
+      "username": "adfa@da",
+      "passwordHash": "$2b$10$pL..h0evAt2q8baTugl9N.Sa/ZgUr7mtT6iDk3GK8dit1dV823ygC",
+      "id": 12
+    }
+  ]
+}
