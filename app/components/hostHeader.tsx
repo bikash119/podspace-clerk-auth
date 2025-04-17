@@ -9,7 +9,6 @@ export default function Host() {
     return (
     <header>
         <nav>
-
             <NavLink
                 end
                 to="/host" 

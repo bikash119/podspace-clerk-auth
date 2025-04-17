@@ -1,10 +1,3 @@
-import { Link, useLoaderData } from "react-router";
-
-
-
-
-
-
 export function Welcome() {
 
   return (

@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useSearchParams,
 } from "react-router";
 
 
@@ -12,6 +13,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { rootAuthLoader } from "@clerk/react-router/ssr.server";
 import { ClerkProvider } from "@clerk/react-router";
+import { useState,useEffect, createContext } from "react";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -20,29 +22,40 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
+
 ];
 
 
+const ThemeContext = createContext({
+  theme: "light",
+  toggleTheme: () => {}
+})
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const [theme,setTheme] = useState("light");
+  const toggleTheme = () => {
+    setTheme(prev => prev === "light" ? "dark" : "light");
+  }
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <h1>Hello I am at the top of the page</h1>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <html lang="en" data-theme={theme}>
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="preconnect" href="https://rsms.me/" />
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+          <Meta />
+          <Links />
+        </head>
+        <body>
+
+          {/* <h1>Hello I am at the top of the page</h1> */}
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
+    </ThemeContext.Provider>
   );
 }
 
@@ -54,7 +67,7 @@ export default function App({loaderData}: {loaderData: Route.ComponentProps}) {
   return (
 
     <div>
-      <h1>Hello I am second in line</h1>
+      {/* <h1>Hello I am second in line</h1> */}
       <ClerkProvider loaderData={loaderData}>
         <Outlet />
       </ClerkProvider>
@@ -90,3 +103,4 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     </main>
   );
 }
+export { ThemeContext }
