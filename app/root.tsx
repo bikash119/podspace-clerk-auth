@@ -8,12 +8,13 @@ import {
   useSearchParams,
 } from "react-router";
 
-
 import type { Route } from "./+types/root";
 import "./app.css";
 import { rootAuthLoader } from "@clerk/react-router/ssr.server";
 import { ClerkProvider } from "@clerk/react-router";
-import { useState,useEffect, createContext } from "react";
+import { useState, createContext } from "react";
+import Footer from "./components/footer";
+
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -47,9 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Meta />
           <Links />
         </head>
-        <body>
-
-          {/* <h1>Hello I am at the top of the page</h1> */}
+        <body className="flex flex-col min-h-full overflow-hidden">
           {children}
           <ScrollRestoration />
           <Scripts />
@@ -65,13 +64,13 @@ export async function loader(request:Route.LoaderArgs) {
 
 export default function App({loaderData}: {loaderData: Route.ComponentProps}) {
   return (
-
-    <div>
-      {/* <h1>Hello I am second in line</h1> */}
-      <ClerkProvider loaderData={loaderData}>
+    <>
+      {/* <ClerkProvider loaderData={loaderData}>
         <Outlet />
-      </ClerkProvider>
-    </div>
+      </ClerkProvider> */}
+      <Outlet />
+      <Footer />
+    </>
   )
 }
 

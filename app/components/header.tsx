@@ -11,6 +11,8 @@ const activeStyle = {
     color: "#161616"
 }
 
+
+
 export default function Header() {
     const { theme, toggleTheme } = useContext(ThemeContext);
   return (
@@ -20,9 +22,9 @@ export default function Header() {
           <Link className="text-2xl font-bold uppercase" to="/">#Podspace</Link>
         </div>
         <div className="flex items-center justify-center gap-3">
-          <SignedIn>
+          {/* <SignedIn>
             <UserButton />
-          </SignedIn>
+          </SignedIn> */}
           <NavLink 
             to="host"
             style={({isActive}) => isActive ? activeStyle : undefined}
@@ -34,7 +36,7 @@ export default function Header() {
           >About
           </NavLink>
           <NavLink 
-            to="pods"
+            to="/pods"
             style={({isActive}) => isActive ? activeStyle : undefined}
           >Pods
           </NavLink>  
