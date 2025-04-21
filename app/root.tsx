@@ -14,6 +14,11 @@ import { rootAuthLoader } from "@clerk/react-router/ssr.server";
 import { ClerkProvider } from "@clerk/react-router";
 import { useState, createContext } from "react";
 import Footer from "./components/footer";
+import { makeServer } from "../server";
+
+if (process.env.NODE_ENV === "development") {
+  makeServer();
+}
 
 
 export const links: Route.LinksFunction = () => [
