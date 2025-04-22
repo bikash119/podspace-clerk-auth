@@ -81,7 +81,7 @@
             "lastBooking": "2024-03-16",
             "isAvailable": true,
             "pricePerHour": 60,
-            "type": ["jamming"],
+            "type": ["jammin"],
             "capacity": 10
         }
     ],
