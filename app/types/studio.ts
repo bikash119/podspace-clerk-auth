@@ -19,7 +19,9 @@ export const Studio = z.object({
         longitude: z.number().optional(),
     }).optional(),
     
-    imageUrl: z.string().optional(),
+    imageUrls: z.array(z.string().url()).optional(),
+    
+    heroImageUrl: z.string().url(),
     
     createdAt: z.date(),
     
@@ -31,7 +33,7 @@ export const Studio = z.object({
 
     pricePerHour: z.number(),
 
-    type: z.enum(["podcast", "music", "video", "jamming"]),
+    type: z.array(z.enum(["podcast", "music", "video", "jamming"])),
 
     capacity: z.number(),
 

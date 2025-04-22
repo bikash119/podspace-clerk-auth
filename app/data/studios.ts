@@ -13,13 +13,13 @@ export const sampleStudios: z.infer<typeof Studio>[] = [
             latitude: 40.7128,
             longitude: -74.0060
         },
-        imageUrl: "https://example.com/soundlab.jpg",
+        heroImageUrl: "https://example.com/soundlab.jpg",
         createdAt: new Date("2024-01-01"),
         updatedAt: new Date("2024-03-15"),
         lastBooking: new Date("2024-03-14"),
         isAvailable: true,
         pricePerHour: 75,
-        type: "podcast",
+        type: ["podcast", "recording"],
         capacity: 4
     },
     {
@@ -34,13 +34,13 @@ export const sampleStudios: z.infer<typeof Studio>[] = [
             latitude: 34.0522,
             longitude: -118.2437
         },
-        imageUrl: "https://example.com/beatfactory.jpg",
+        heroImageUrl: "https://example.com/beatfactory.jpg",
         createdAt: new Date("2024-01-15"),
         updatedAt: new Date("2024-03-16"),
         lastBooking: new Date("2024-03-13"),
         isAvailable: true,
         pricePerHour: 120,
-        type: "music",
+        type: ["music", "production"],
         capacity: 6
     },
     {
@@ -55,13 +55,13 @@ export const sampleStudios: z.infer<typeof Studio>[] = [
             latitude: 41.8781,
             longitude: -87.6298
         },
-        imageUrl: "https://example.com/videovision.jpg",
+        heroImageUrl: "https://example.com/videovision.jpg",
         createdAt: new Date("2024-02-01"),
         updatedAt: new Date("2024-03-17"),
         lastBooking: new Date("2024-03-15"),
         isAvailable: false,
         pricePerHour: 150,
-        type: "video",
+        type: ["video", "streaming"],
         capacity: 8
     },
     {
@@ -76,13 +76,13 @@ export const sampleStudios: z.infer<typeof Studio>[] = [
             latitude: 30.2672,
             longitude: -97.7431
         },
-        imageUrl: "https://example.com/jamspace.jpg",
+        heroImageUrl: "https://example.com/jamspace.jpg",
         createdAt: new Date("2024-02-15"),
         updatedAt: new Date("2024-03-18"),
         lastBooking: new Date("2024-03-16"),
         isAvailable: true,
         pricePerHour: 60,
-        type: "jamming",
+        type: ["jamming", "rehearsal"],
         capacity: 10
     }
 ]; 
