@@ -26,7 +26,6 @@ function MoonIcon() {
 
   
 export default function ThemeSwitcher({ theme, toggleTheme }: ThemeSwitcherProps) {
-    const buttonText = theme === "light" ? "Dark" : "Light";
   return (
 
     <div>

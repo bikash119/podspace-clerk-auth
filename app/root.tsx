@@ -12,14 +12,9 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { rootAuthLoader } from "@clerk/react-router/ssr.server";
 import { ClerkProvider } from "@clerk/react-router";
-import { useState, createContext } from "react";
+import { useState, createContext, useRef } from "react";
 import Footer from "./components/footer";
-import { makeServer } from "../server";
-
-if (process.env.NODE_ENV === "development") {
-  makeServer();
-}
-
+import { ThemeContext } from "./contexts/ThemeContext";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -32,10 +27,6 @@ export const links: Route.LinksFunction = () => [
 ];
 
 
-const ThemeContext = createContext({
-  theme: "light",
-  toggleTheme: () => {}
-})
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [theme,setTheme] = useState("light");
@@ -53,7 +44,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Meta />
           <Links />
         </head>
-        <body className="flex flex-col min-h-full overflow-hidden">
+        <body className="flex flex-col min-h-screen overflow-hidden">
           {children}
           <ScrollRestoration />
           <Scripts />
@@ -70,11 +61,10 @@ export async function loader(request:Route.LoaderArgs) {
 export default function App({loaderData}: {loaderData: Route.ComponentProps}) {
   return (
     <>
-      {/* <ClerkProvider loaderData={loaderData}>
+      <ClerkProvider loaderData={loaderData}>
         <Outlet />
-      </ClerkProvider> */}
-      <Outlet />
-      <Footer />
+        <Footer />
+      </ClerkProvider>
     </>
   )
 }
@@ -107,4 +97,3 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     </main>
   );
 }
-export { ThemeContext }
