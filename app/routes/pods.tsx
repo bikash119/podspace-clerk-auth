@@ -3,7 +3,7 @@ import type { Route } from "./+types/pods";
 import { Studio, StudioType } from "../types/studio";
 import { z } from "zod";
 import { useEffect, useState } from "react";
-import {Form, useSearchParams, useNavigation} from "react-router";
+import {Form, useSearchParams, useNavigation, useSubmit} from "react-router";
 
 type PodsLoaderData = {
     studios: z.infer<typeof Studio>[];
@@ -17,6 +17,7 @@ export async function clientLoader({request,params}: Route.ClientLoaderArgs) {
     const type = url.searchParams.get("type");
     const q = url.searchParams.get("q");
     let studios: z.infer<typeof Studio>[] = [];
+
     if(type && q){
         studios = await searchStudiosByTypeAndQuery(type,q);
     }else if(type){
@@ -39,6 +40,7 @@ export default function Pods({loaderData}: {loaderData: PodsLoaderData}) {
     // the query now needs to be kept in state
     const {studios,types,q} = loaderData;
     const [query, setQuery] = useState(q || "");
+    const submit = useSubmit();
     useEffect(() => {
         setQuery(q || "");
     }, [q]);
@@ -52,6 +54,10 @@ export default function Pods({loaderData}: {loaderData: PodsLoaderData}) {
             return prevParams;
         });
     }
+    const searching = navigation.location &&
+        new URLSearchParams(navigation.location.search).has(
+            "q",
+        );
     const studioElem = studios.map((studio: z.infer<typeof Studio>) => {
         return (
             <div key={studio.id} className="flex border-2 border-gray-300 rounded-md p-4">
@@ -90,20 +96,28 @@ export default function Pods({loaderData}: {loaderData: PodsLoaderData}) {
         
     return (
        <div className="flex flex-col gap-4">
-        <div className="flex gap-2 justify-between">
+        <div className="flex gap-2 justify-between pr-4">
             <h1 className="text-2xl font-bold">Explore our pods</h1>
-            <Form id="search-form" className="flex gap-2" role="search">
+            <Form 
+                id="search-form" 
+                className="flex gap-2" 
+                role="search"
+                onChange={(e) => {
+                    const isFirstSearch = q === null;
+                    submit(e.currentTarget,{replace:!isFirstSearch});
+                }}
+            >
                 <input 
                     type="search" 
-                    placeholder="Search" 
+                    placeholder="Type here..." 
                     aria-label="Search Pods" 
-                    defaultValue={q||""}
                     id="q"
                     name="q"
                     onChange={(e) => {
                         setQuery(e.currentTarget.value);
                     }}
                     value={query}
+                    className={`input input-ghost ${searching ? "loading loading-spinner loading-xs" : ""}`}
                     />
             </Form>
         </div>

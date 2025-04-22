@@ -4,7 +4,7 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export async function getStudios() {
     try {
-        // await sleep(3000);
+        await sleep(3000);
         const response = await fetch(`${BASE_URL}/studios`);
         const studios = await response.json();
         return studios;
