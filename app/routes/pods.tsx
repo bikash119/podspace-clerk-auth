@@ -3,7 +3,7 @@ import type { Route } from "./+types/pods";
 import { Studio, StudioType } from "../types/studio";
 import { z } from "zod";
 import { useEffect, useState } from "react";
-import {Form, useSearchParams, useNavigation, useSubmit} from "react-router";
+import {Form, useSearchParams, useNavigation, useSubmit, Link} from "react-router";
 
 type PodsLoaderData = {
     studios: z.infer<typeof Studio>[];
@@ -60,18 +60,20 @@ export default function Pods({loaderData}: {loaderData: PodsLoaderData}) {
         );
     const studioElem = studios.map((studio: z.infer<typeof Studio>) => {
         return (
-            <div key={studio.id} className="flex border-2 border-gray-300 rounded-md p-4">
-                <img src={studio.heroImageUrl} alt={studio.name} className="w-1/3 h-1/3 rounded-md" />
-                <div className="flex flex-col gap-2">
-                    <h1 className="text-2xl font-bold">{studio.name}</h1>
-                    <p className="text-gray-500">{studio.description}</p>
-                    <div className="flex gap-2">
-                        {(studio.type as z.infer<typeof StudioType>[]).map((type:z.infer<typeof StudioType>) => {
-                            return <span key={type.id} className="badge badge-outline text-gray-500">{type.name}</span>
-                        })}
+            <Link to={`${studio.id}`} key={studio.id} >
+                <div key={studio.id} className="flex border-2 border-gray-300 rounded-md p-4">
+                    <img src={studio.heroImageUrl} alt={studio.name} className="w-1/3 h-1/3 rounded-md" />
+                    <div className="flex flex-col gap-2">
+                        <h1 className="text-2xl font-bold">{studio.name}</h1>
+                        <p className="text-gray-500">{studio.description}</p>
+                        <div className="flex gap-2">
+                            {(studio.type as z.infer<typeof StudioType>[]).map((type:z.infer<typeof StudioType>) => {
+                                return <span key={type.id} className="badge badge-outline text-gray-500">{type.name}</span>
+                            })}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Link>
         );
     });
     const filterElems = types.map((type: z.infer<typeof StudioType>) => {

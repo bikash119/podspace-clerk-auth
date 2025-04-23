@@ -12,7 +12,13 @@
                 "latitude": 40.7128,
                 "longitude": -74.0060
             },
-            "heroImageUrl": "https://example.com/soundlab.jpg",
+            "heroImageUrl": "https://images.unsplash.com/photo-1533621517681-fd36c2e12666?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwzNjAzMDk2fHxlbnwwfHx8fHw%3D",
+            "imageUrls": [
+                "https://images.unsplash.com/photo-1601814837661-ce2832acd413?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwzNjAzMDk2fHxlbnwwfHx8fHw%3D",
+                "https://images.unsplash.com/photo-1516223725307-6f76b9ec8742?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NXwzNjAzMDk2fHxlbnwwfHx8fHw%3D",
+                "https://images.unsplash.com/photo-1595253033592-d17f1ae4af96?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8OHwzNjAzMDk2fHxlbnwwfHx8fHw%3D",
+                "https://images.unsplash.com/photo-1544719576-904e2d01e057?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTJ8MzYwMzA5Nnx8ZW58MHx8fHx8"
+            ],
             "createdAt": "2024-01-01",
             "updatedAt": "2024-03-15",
             "lastBooking": "2024-03-14",

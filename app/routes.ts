@@ -6,6 +6,7 @@ export default [
         route("about", "routes/about.tsx"),
         route("sign-up", "routes/auth/sign-up.tsx"),
         route("pods","routes/pods.tsx"),
+        route("pods/:podId","routes/podDetails.tsx"),
         route("host", "layout/hostLayout.tsx", [
             index("routes/host/dashboard.tsx"),
             route("income","routes/host/income.tsx"),

@@ -61,3 +61,13 @@ export async function getStudioTypes() {
     }
 }
 
+export async function getPod(id: string) {
+    try {
+        const response = await fetch(`${BASE_URL}/studios/${id}`);
+        const pod = await response.json();
+        return pod;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
